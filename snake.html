@@ -33,24 +33,24 @@
 
     function drawSnake() {
         snake.forEach(part => {
-            ctx.fillStyle = 'lime'; // snake color
+            ctx.fillStyle = 'lime'; 
             ctx.fillRect(part.x, part.y, size, size); 
         });
     }
 
     function drawFood() {
-        ctx.fillStyle = 'red'; // food color
+        ctx.fillStyle = 'red'; 
         ctx.fillRect(food.x, food.y, size, size); 
     }
 
     function moveSnake() {
-        // Create a new head based on the current direction
+        
         const newHead = { x: snake[0].x + dx, y: snake[0].y + dy };
 
         snake.unshift(newHead);
 
         if (newHead.x === food.x && newHead.y === food.y) {
-            // Generate new food at a random position
+            
             food.x = Math.floor(Math.random() * (canvas.width / size)) * size;
             food.y = Math.floor(Math.random() * (canvas.height / size)) * size;
         } else {
@@ -82,11 +82,9 @@
 
     function checkCollision() {
         const head = snake[0];
-        // Check if the snake hits the wall
         if (head.x < 0 || head.x >= canvas.width || head.y < 0 || head.y >= canvas.height) {
             return true;
         }
-        // Check if the snake hits itself
         for (let i = 1; i < snake.length; i++) {
             if (head.x === snake[i].x && head.y === snake[i].y) {
                 return true;
